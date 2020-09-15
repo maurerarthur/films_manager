@@ -12,16 +12,16 @@
 
                 <h2 class="mb-5">Films Manager Login</h2>
 
-                <form class="col-6">
+                <form class="col-6" method="POST" action="/login.php">
 
                     <div class="form-group">
                         <label>Endereço de e-mail</label>
-                        <input type="email" class="form-control" placeholder="E-mail">
+                        <input type="email" name="email" class="form-control" placeholder="E-mail">
                     </div>
 
                     <div class="form-group">
                         <label>Senha</label>
-                        <input type="password" class="form-control" placeholder="Senha">
+                        <input type="password" name="senha" class="form-control" placeholder="Senha">
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>

@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     $host = "localhost";
     $db = "films_sys";
     $db_user = "root";
@@ -9,20 +11,22 @@
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if(is_null($con)) {
+
         echo "Erro na conexão";
+
     } else {
 
         try {
 
-            $stmt = $con->prepare("INSERT INTO users (email, senha) VALUES (:email, :senha)");
-            $stmt->execute(array(
-                ":email" => $_POST["email"],
-                ":senha" => password_hash($_POST["senha"], PASSWORD_BCRYPT, array(
-                    "cost" => 10
-                ))
-            ));
+            $stmt = $con->prepare("SELECT email, senha FROM users WHERE email = :email");
+            $stmt->bindParam(":email", $_POST["email"]);
+            $stmt->execute();
 
-            header("Location: /index.php");
+            while($usuario = $stmt->fetch()) {
+                if($usuario["email"] == $_POST["email"] && password_verify($_POST["senha"], $usuario["senha"])) {
+                    $_SESSION["usuario"] = $usuario["email"];
+                }
+            }
 
         } catch(PDOException $e) {
             $erro = $e->getMessage();
