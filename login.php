@@ -2,6 +2,10 @@
 
     session_start();
 
+    if(isset($_SESSION["usuario"])) {
+        header("Location: ./dashboard");
+    }
+
     require_once("./src/utils/ConnectionFactory.php");
 
     $con = ConnectionFactory::getConnection();
