@@ -12,7 +12,11 @@
 
                 <h2 class="mb-5">Criação de Conta</h2>
 
-                <form class="col-6" method="POST" action="registro.php">
+                <form class="col-md-6" method="POST" action="/registro.php">
+
+                    <?php if(isset($_GET["erro"]) && $_GET["erro"] == true) : ?>
+                        <div class="alert alert-danger d-flex align-items-center justify-content-center w-100" role="alert">Este email já foi cadastrado</div>
+                    <?php endif; ?>
 
                     <div class="form-group">
                         <label>Endereço de e-mail</label>

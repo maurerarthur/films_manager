@@ -14,6 +14,10 @@
 
                 <form class="col-6" method="POST" action="/login.php">
 
+                    <?php if(isset($_GET["erro"]) && $_GET["erro"] == true) : ?>
+                        <div class="alert alert-danger d-flex align-items-center justify-content-center w-100" role="alert">O email ou a senha estão errados</div>
+                    <?php endif; ?>
+
                     <div class="form-group">
                         <label>Endereço de e-mail</label>
                         <input type="email" name="email" class="form-control" placeholder="E-mail">
