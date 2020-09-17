@@ -17,7 +17,7 @@
         $stmt->bindParam(":id", $_GET["id"]);
         $stmt->execute();
 
-        header("Location: /dashboard");
+        header("Location: /categorias");
 
     } catch(PDOException $e) {
         $erro = $e->getMessage();

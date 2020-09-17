@@ -17,7 +17,6 @@
         </header>
 
         <?php include("../partials/header.php"); ?>
-        <?php include("../partials/categorias.php"); ?>
 
     </body>
 

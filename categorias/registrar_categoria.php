@@ -18,7 +18,7 @@
             ":categoria" => $_POST["categoria"]
         ));
 
-        header("Location: /dashboard");
+        header("Location: /categorias");
 
     } catch(PDOException $e) {
         $erro = $e->getMessage();

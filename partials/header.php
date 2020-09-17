@@ -13,6 +13,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="/dashboard">Dashboard</a>
+                    <a class="nav-item nav-link active" href="/categorias">Categorias</a>
                     <a class="nav-item nav-link active" href="/logout.php">Logout</a>
                 </div>
             </div>
