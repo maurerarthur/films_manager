@@ -3,7 +3,7 @@
     session_start();
 
     if(isset($_SESSION["usuario"])) {
-        header("Location: ./dashboard");
+        header("Location: ./filmes");
     }
 
     require_once("./src/utils/ConnectionFactory.php");
