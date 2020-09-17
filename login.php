@@ -21,7 +21,7 @@
 
         if($usuario && $usuario["email"] == $_POST["email"] && password_verify($_POST["senha"], $usuario["senha"])) {
             $_SESSION["usuario"] = $usuario["email"];
-            header("Location: ./dashboard");
+            header("Location: ./filmes");
             exit(0);
         } else {
             header("Location: /index.php?erro=true");

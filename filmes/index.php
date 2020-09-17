@@ -13,10 +13,10 @@
 
     try {
 
-        $stmt = $con->prepare("SELECT * FROM categorias");
+        $stmt = $con->prepare("SELECT * FROM filmes");
         $stmt->execute();
 
-        $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $filmes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     } catch(PDOException $e) {
         $erro = $e->getMessage();
@@ -37,11 +37,11 @@
 
         <div class="container">
 
-            <a href="/categorias/new.php" class="btn btn-primary w-100 mt-5">Cadastrar nova categoria</a>
+            <a href="/filmes/new.php" class="btn btn-primary w-100 mt-5">Cadastrar novo filme/série</a>
 
-            <?php if(empty($categorias)) : ?>
+            <?php if(empty($filmes)) : ?>
 
-                <div class="alert alert-primary d-flex align-items-center justify-content-center w-100 mt-2" role="alert">Nenhuma categoria cadastrada</div>
+                <div class="alert alert-primary d-flex align-items-center justify-content-center w-100 mt-2" role="alert">Nenhum filme/série cadastrado</div>
             
             <?php else : ?>
 
@@ -56,13 +56,13 @@
                     </thead>
 
                     <tbody>
-                        <?php foreach($categorias as $categoria) : ?>
+                        <?php foreach($filmes as $filme) : ?>
                             <tr>
-                                <td><?php echo $categoria["id"]; ?></td>
-                                <td><?php echo $categoria["categoria"]; ?></td>
+                                <td><?php echo $filme["id"]; ?></td>
+                                <td><?php echo $filme["nome"]; ?></td>
                                 <td>
-                                    <a href="/categorias/edit.php?id=<?php echo $categoria["id"]; ?>&categoria=<?php echo $categoria["categoria"]; ?>" type="button" class="btn btn-warning">Editar</a>
-                                    <a href="/categorias/delete.php?id=<?php echo $categoria["id"]; ?>" type="button" class="btn btn-danger">Excluir</a>
+                                    <a href="/filmes/edit.php?id=<?php echo $filme["id"]; ?>&nome=<?php echo $filme["nome"]; ?>" type="button" class="btn btn-warning">Editar</a>
+                                    <a href="/filmes/delete.php?id=<?php echo $filme["id"]; ?>" type="button" class="btn btn-danger">Excluir</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
