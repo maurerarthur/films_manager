@@ -13,10 +13,27 @@
 
     try {
 
-        $stmt = $con->prepare("SELECT * FROM filmes");
+        if(isset($_GET["id"])) {
+
+            $stmt = $con->prepare("SELECT * FROM filmes WHERE categoria = :id");
+            $stmt->bindParam(":id", $_GET["id"]);
+            $stmt->execute();
+    
+            $filmes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } else {
+
+            $stmt = $con->prepare("SELECT * FROM filmes");
+            $stmt->execute();
+    
+            $filmes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+
+        $stmt = $con->prepare("SELECT * FROM categorias");
         $stmt->execute();
 
-        $filmes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     } catch(PDOException $e) {
         $erro = $e->getMessage();
@@ -36,6 +53,15 @@
     <body>
 
         <div class="container">
+
+            <h4 class="mt-5">Categorias:</h4>
+
+            <div>
+                <a href="/filmes" class="btn btn-primary">Todas</a>
+                <?php foreach($categorias as $categoria) : ?>
+                    <a href="/filmes?id=<?php echo $categoria["id"]; ?>" class="btn btn-primary"><?php echo $categoria["categoria"]; ?></a>
+                <?php endforeach; ?>
+            </div>
 
             <a href="/filmes/new.php" class="btn btn-primary w-100 mt-5">Cadastrar novo filme/série</a>
 
