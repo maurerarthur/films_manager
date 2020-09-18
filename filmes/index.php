@@ -54,7 +54,7 @@
 
         <div class="container">
 
-            <h4 class="mt-5">Categorias:</h4>
+            <h4 class="mt-5">Filtros:</h4>
 
             <div>
                 <a href="/filmes" class="btn btn-primary">Todas</a>
